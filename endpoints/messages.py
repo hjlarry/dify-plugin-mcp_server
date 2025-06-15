@@ -43,6 +43,13 @@ class MessageEndpoint(Endpoint):
                 },
             }
 
+        elif data.get("method") == "ping":
+            response = {
+                "jsonrpc": "2.0",
+                "id": data.get("id"),
+                "result": {},
+            }
+            
         elif data.get("method") == "notifications/initialized":
             return Response("", status=202, content_type="application/json")
 

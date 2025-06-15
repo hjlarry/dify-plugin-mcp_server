@@ -1,17 +1,12 @@
-version: 0.0.3
+version: 0.0.4
 type: plugin
 author: hjlarry
 name: mcp-server
 label:
-  en_US: mcp-server
-  ja_JP: mcp-server
-  zh_Hans: mcp-server
-  pt_BR: mcp-server
+  en_US: MCP server
 description:
   en_US: make dify's workflow as a MCP server
-  ja_JP: make dify's workflow as a MCP server
-  zh_Hans: make dify's workflow as a MCP server
-  pt_BR: make dify's workflow as a MCP server
+  zh_Hans: 使dify的工作流或对话流成为一个MCP服务器
 icon: icon.svg
 resource:
   memory: 268435456

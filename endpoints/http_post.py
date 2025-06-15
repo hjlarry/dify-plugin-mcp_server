@@ -53,6 +53,17 @@ class HTTPPostEndpoint(Endpoint):
                 content_type="application/json",
                 headers=headers,
             )
+        elif data.get("method") == "ping":
+            response = {
+                "jsonrpc": "2.0",
+                "id": data.get("id"),
+                "result": {},
+            }
+            return Response(
+                json.dumps(response),
+                status=200,
+                content_type="application/json",
+            )
 
         elif data.get("method") == "notifications/initialized":
             return Response("", status=202, content_type="application/json")

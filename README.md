@@ -1,7 +1,7 @@
 # MCP Server
 
 **Author:** hjlarry  
-**Version:** 0.0.3  
+**Version:** 0.0.4  
 **Type:** extension   
 **Repo:** [https://github.com/hjlarry/dify-plugin-mcp_server](https://github.com/hjlarry/dify-plugin-mcp_server)  
 **Feature Request:** [issues](https://github.com/hjlarry/dify-plugin-mcp_server/issues)  
@@ -50,6 +50,9 @@ The app's input schema must define its input parameters. For a chat dify app, en
 
 
 ## Changelog
+
+### 0.0.4
+- Add response to the `ping` method of MCP client, some clients use this method to check server health 
 
 ### 0.0.3
 - To fix sse get non-exist key get lots error logs on the plugin daemon.
