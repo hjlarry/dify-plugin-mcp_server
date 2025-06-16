@@ -8,6 +8,8 @@ from werkzeug import Request, Response
 from dify_plugin import Endpoint
 from dify_plugin.config.logger_format import plugin_logger_handler
 
+from .auth import validate_bearer_token
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 logger.addHandler(plugin_logger_handler)
@@ -22,6 +24,11 @@ class SSEEndpoint(Endpoint):
         Invokes the endpoint with the given request.
         """
         logger.info(f"SSEEndpoint request headers: {r.headers}")
+
+        auth_error = validate_bearer_token(r, settings)
+        if auth_error:
+            return auth_error
+        
         session_id = str(uuid.uuid4()).replace("-", "")
 
         def generate():

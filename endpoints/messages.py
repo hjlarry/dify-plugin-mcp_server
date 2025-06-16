@@ -5,6 +5,8 @@ from werkzeug import Request, Response
 from dify_plugin import Endpoint
 from dify_plugin.config.logger_format import plugin_logger_handler
 
+from .auth import validate_bearer_token
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 logger.addHandler(plugin_logger_handler)
@@ -17,6 +19,11 @@ class MessageEndpoint(Endpoint):
         """
         logger.info(f"MessageEndpoint request headers: {r.headers}")
         logger.info(f"MessageEndpoint request json: {r.json}")
+
+        auth_error = validate_bearer_token(r, settings)
+        if auth_error:
+            return auth_error
+        
         app_id = settings.get("app").get("app_id")
         try:
             tool = json.loads(settings.get("app-input-schema"))
@@ -49,7 +56,7 @@ class MessageEndpoint(Endpoint):
                 "id": data.get("id"),
                 "result": {},
             }
-            
+
         elif data.get("method") == "notifications/initialized":
             return Response("", status=202, content_type="application/json")
 

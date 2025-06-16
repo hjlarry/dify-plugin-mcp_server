@@ -13,6 +13,7 @@ settings:
     required: true
     label:
       en_US: App Type
+      zh_Hans: 应用类型
     options:
       - label:
           en_US: Chat
@@ -25,9 +26,19 @@ settings:
     required: true
     label:
       en_US: App Input Schema
+      zh_Hans: 应用输入 schema
     placeholder:
       en_US: the json format of your app input schema
       zh_Hans: 请输入应用所需输入的 json 格式
+  - name: auth-token
+    type: secret-input
+    required: false
+    label:
+      en_US: Auth Bearer Token
+      zh_Hans: 认证Bearer token
+    placeholder:
+      en_US: the auth Bearer token of your app, if not provided, the app will not validate
+      zh_Hans: 请输入应用的认证Bearer token，如果未提供，应用将不验证
 endpoints:
   - endpoints/sse.yaml
   - endpoints/messages.yaml

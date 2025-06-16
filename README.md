@@ -48,11 +48,16 @@ The app's input schema must define its input parameters. For a chat dify app, en
 ### 4. enjoy it!
 ![5](./_assets/5.png)
 
+### 5. To keep your data secure, you can add a `Auth Bearer Token` on the endpoint setting.
+
+For example, if your `Auth Bearer Token` is setting to `sk-abcdefgh`, then the request header of MCP client must add `Authorization: Bearer sk-abcdefgh`
+
 
 ## Changelog
 
 ### 0.0.4
 - Add response to the `ping` method of MCP client, some clients use this method to check server health 
+- Add `Authorization: Bearer` token validator
 
 ### 0.0.3
 - To fix sse get non-exist key get lots error logs on the plugin daemon.

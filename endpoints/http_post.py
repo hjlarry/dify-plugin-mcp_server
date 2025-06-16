@@ -7,6 +7,8 @@ from werkzeug import Request, Response
 from dify_plugin import Endpoint
 from dify_plugin.config.logger_format import plugin_logger_handler
 
+from .auth import validate_bearer_token
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 logger.addHandler(plugin_logger_handler)
@@ -23,6 +25,11 @@ class HTTPPostEndpoint(Endpoint):
         """
         logger.info(f"HTTPPostEndpoint request headers: {r.headers}")
         logger.info(f"HTTPPostEndpoint request json: {r.json}")
+
+        auth_error = validate_bearer_token(r, settings)
+        if auth_error:
+            return auth_error
+
         app_id = settings.get("app").get("app_id")
         try:
             tool = json.loads(settings.get("app-input-schema"))
