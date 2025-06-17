@@ -34,7 +34,7 @@ class HTTPPostEndpoint(Endpoint):
         try:
             tool = json.loads(settings.get("app-input-schema"))
         except json.JSONDecodeError:
-            logger.error(f"Invalid app-input-schema: {settings.get("app-input-schema")}")
+            logger.error(f'Invalid app-input-schema: {settings.get("app-input-schema")}')
             raise ValueError("Invalid app-input-schema")
 
         session_id = r.args.get("session_id")
