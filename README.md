@@ -58,6 +58,7 @@ For example, if your `Auth Bearer Token` is setting to `sk-abcdefgh`, then the r
 ### 0.0.4
 - Add response to the `ping` method of MCP client, some clients use this method to check server health 
 - Add `Authorization: Bearer` token validator
+- Fix some [log](https://github.com/hjlarry/dify-plugin-mcp_server/pull/35) incorrect 
 
 ### 0.0.3
 - To fix sse get non-exist key get lots error logs on the plugin daemon.
